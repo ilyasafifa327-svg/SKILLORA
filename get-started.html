@@ -3,21 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="description" content="Start your learning journey with SKILLORA. Choose a skill, explore learning paths, and build practical projects.">
-
     <title>Get Started | SKILLORA</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="style.css">
 
-    <!-- Get Started page styling -->
     <style>
-        /* PAGE */
         .get-started-page {
             background: #F7F9F5;
             color: #20292B;
@@ -30,7 +24,6 @@
             font-family: 'Outfit', sans-serif;
         }
 
-        /* HERO */
         .get-started-hero {
             padding: 65px 0 55px;
             background: #D8F3EF;
@@ -70,7 +63,6 @@
             text-decoration: none;
         }
 
-        /* MAIN LAYOUT */
         .get-started-section {
             padding: 60px 0 75px;
         }
@@ -82,7 +74,6 @@
             gap: 30px;
         }
 
-        /* FORM CARD */
         .get-started-form-card {
             background: #FFFFFF;
             border: 1px solid #D1E3DE;
@@ -97,7 +88,8 @@
             margin: 0 0 10px;
         }
 
-        .get-started-form-intro {
+        .get-started-form-intro,
+        .learning-points-intro {
             color: #46585A;
             line-height: 1.7;
             margin-bottom: 28px;
@@ -168,7 +160,6 @@
             line-height: 1.5;
         }
 
-        /* SUBMIT BUTTON */
         .get-started-submit {
             display: flex;
             justify-content: center;
@@ -203,7 +194,6 @@
             opacity: 0.7;
         }
 
-        /* FORM STATUS */
         .get-started-status {
             display: none;
             padding: 16px;
@@ -227,7 +217,6 @@
             color: #842525;
         }
 
-        /* RIGHT SIDE */
         .learning-points {
             display: grid;
             gap: 18px;
@@ -240,12 +229,10 @@
         }
 
         .learning-points-intro {
-            color: #46585A;
             line-height: 1.8;
             margin-bottom: 6px;
         }
 
-        /* THREE LEARNING CARDS */
         .learning-point-card {
             display: block;
             padding: 24px;
@@ -294,7 +281,6 @@
             margin: 0;
         }
 
-        /* Make card content readable even if general CSS conflicts */
         .get-started-page .learning-point-card h3 {
             color: #103C43 !important;
             -webkit-text-fill-color: #103C43;
@@ -309,7 +295,6 @@
             visibility: visible;
         }
 
-        /* SMALL NOTICE */
         .get-started-notice {
             padding: 20px;
             background: #D8F3EF;
@@ -323,7 +308,6 @@
             color: #103C43;
         }
 
-        /* RESPONSIVE */
         @media (max-width: 850px) {
             .get-started-layout {
                 grid-template-columns: 1fr;
@@ -356,165 +340,92 @@
 
 <body class="get-started-page">
 
-    <!-- HEADER
+    <!-- MOVING MARQUEE: ABOVE THE NAVIGATION -->
+    <div class="skillora-marquee" aria-label="Learn new skills, build real projects, explore your potential">
+        <div class="skillora-marquee-track" aria-hidden="true">
+            <span>LEARN NEW SKILLS</span><span class="marquee-star">✦</span>
+            <span>BUILD REAL PROJECTS</span><span class="marquee-star">✦</span>
+            <span>EXPLORE YOUR POTENTIAL</span><span class="marquee-star">✦</span>
+            <span>CREATE POSSIBILITIES</span><span class="marquee-star">✦</span>
+            <span>LEARN NEW SKILLS</span><span class="marquee-star">✦</span>
+            <span>BUILD REAL PROJECTS</span><span class="marquee-star">✦</span>
+            <span>EXPLORE YOUR POTENTIAL</span><span class="marquee-star">✦</span>
+            <span>CREATE POSSIBILITIES</span><span class="marquee-star">✦</span>
+        </div>
+    </div>
+
+    <!-- HEADER -->
     <header class="site-header">
         <div class="container nav-wrap">
-
-            <a href="index.html" class="brand" aria-label="SKILLORA Home">
-                <svg width="42" height="42" viewBox="0 0 42 42"
-                     fill="none" xmlns="http://www.w3.org/2000/svg"
-                     aria-hidden="true">
+            <a href="index.html" class="brand" aria-label="SKILLORA home">
+                <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <rect width="42" height="42" rx="12" fill="#103C43"/>
-                    <path d="M12 14H30V18H16V22H27V26H16V30H30"
-                          stroke="#C7F36B"
-                          stroke-width="2.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"/>
+                    <path d="M12 14H30V18H16V22H27V26H16V30H30" stroke="#C7F36B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-
                 <span class="brand-text">
                     <strong>SKILLORA</strong>
                     <small>Learn Skills. Create Possibilities.</small>
                 </span>
             </a>
 
-            <button class="nav-toggle"
-                    type="button"
-                    aria-label="Open navigation menu"
-                    aria-controls="primary-nav"
-                    aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+                <span></span><span></span><span></span>
             </button>
 
-            <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+            <nav class="primary-nav" id="primary-nav" aria-label="Primary">
                 <a href="index.html">Home</a>
                 <a href="explore.html">Explore</a>
                 <a href="learning-paths.html">Learning Paths</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
-                <a href="get-started.html" aria-current="page">Get Started</a>
+                <a href="get-started.html" class="active" aria-current="page">Get Started</a>
             </nav>
-
         </div>
-    </header> -->
+    </header>
 
-    <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="index.html" aria-label="SKILLORA home">
-        <svg class="brand-mark" viewBox="0 0 48 48" width="40" height="40" aria-hidden="true" focusable="false">
-          <rect class="logo-bg" x="1" y="1" width="46" height="46" rx="13" fill="#103C43"/>
-          <path d="M9 21l13 4v14L9 35z" fill="#D8F3EF"/>
-          <path d="M26 25l13-9v15L26 39z" fill="#C7F36B"/>
-          <path d="M17 6l1.7 4.3L23 12l-4.3 1.7L17 18l-1.7-4.3L11 12l4.3-1.7z" fill="#C7F36B"/>
-        </svg>
-        <span class="brand-text">SKILLORA</span>
-      </a>
-
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
-        <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
-      </button>
-
-      <nav class="primary-nav" id="primary-nav" aria-label="Primary">
-        <ul class="nav-list">
-          <li><a class="nav-link" href="index.html" aria-current="page">Home</a></li>
-          <li><a class="nav-link" href="explore.html">Explore</a></li>
-          <li><a class="nav-link" href="learning-paths.html">Learning Paths</a></li>
-          <li><a class="nav-link" href="about.html">About</a></li>
-          <li><a class="nav-link" href="contact.html">Contact</a></li>
-        </ul>
-        <a class="btn btn-primary nav-cta" href="get-started.html">Get Started
-          <svg class="icon icon-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </nav>
-    </div>
-  </header>
-
-    <main id="main">
-
+    <main>
         <!-- HERO -->
         <section class="get-started-hero">
             <div class="container">
-
                 <div class="get-started-breadcrumb">
-                    <a href="index.html">Home</a>
-                    &nbsp; / &nbsp;
-                    <span>Get Started</span>
+                    <a href="index.html">Home</a> / Get Started
                 </div>
-
-                <p class="eyebrow">YOUR JOURNEY STARTS HERE</p>
-
-                <h1>Start Learning.<br>Create Possibilities.</h1>
-
+                <p class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</p>
+                <h1>Turn Your Curiosity<br>Into a Skill.</h1>
                 <p>
-                    Every expert starts as a beginner. Tell us what you want
-                    to learn, choose your interests, and take your first step
-                    towards building practical skills.
+                    Tell us what you want to learn and where you want to go.
+                    Start with one skill, build practical experience, and create
+                    possibilities for your future.
                 </p>
-
             </div>
         </section>
 
-        <!-- FORM AND LEARNING POINTS -->
+        <!-- FORM AND LEARNING CARDS -->
         <section class="get-started-section">
             <div class="container">
-
                 <div class="get-started-layout">
 
-                    <!-- LEFT: FORM -->
-                    <section class="get-started-form-card"
-                             aria-labelledby="form-heading">
-
-                        <h2 id="form-heading">Let's Get Started</h2>
-
+                    <section class="get-started-form-card" aria-labelledby="get-started-form-heading">
+                        <h2 id="get-started-form-heading">Let's Get Started</h2>
                         <p class="get-started-form-intro">
-                            Complete the form below to create your learning
-                            plan. Fields marked with * are required.
+                            Complete this short form to create a simple starting plan
+                            for your learning journey.
                         </p>
 
-                        <form id="get-started-form"
-                              class="get-started-form">
-
+                        <form class="get-started-form" id="get-started-form">
                             <div class="get-started-field">
-                                <label for="full-name">
-                                    Full Name <span class="required">*</span>
-                                </label>
-
-                                <input
-                                    type="text"
-                                    id="full-name"
-                                    name="fullName"
-                                    placeholder="Enter your full name"
-                                    autocomplete="name"
-                                    required
-                                    minlength="2"
-                                    maxlength="100">
+                                <label for="full-name">Your Full Name <span class="required">*</span></label>
+                                <input type="text" id="full-name" name="fullName" placeholder="Enter your full name" autocomplete="name" required minlength="2" maxlength="150">
                             </div>
 
                             <div class="get-started-field">
-                                <label for="email">
-                                    Email Address <span class="required">*</span>
-                                </label>
-
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    placeholder="you@example.com"
-                                    autocomplete="email"
-                                    required
-                                    maxlength="150">
+                                <label for="email">Email Address <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required maxlength="254">
                             </div>
 
                             <div class="get-started-field">
-                                <label for="experience">
-                                    Your Current Experience <span class="required">*</span>
-                                </label>
-
-                                <select id="experience"
-                                        name="experience"
-                                        required>
+                                <label for="experience">Your Current Experience <span class="required">*</span></label>
+                                <select id="experience" name="experience" required>
                                     <option value="">Select your level</option>
                                     <option value="beginner">Beginner — Just starting</option>
                                     <option value="some-knowledge">Some knowledge — Learning the basics</option>
@@ -523,13 +434,8 @@
                             </div>
 
                             <div class="get-started-field">
-                                <label for="interest">
-                                    What Would You Like to Learn? <span class="required">*</span>
-                                </label>
-
-                                <select id="interest"
-                                        name="interest"
-                                        required>
+                                <label for="interest">What Would You Like to Learn? <span class="required">*</span></label>
+                                <select id="interest" name="interest" required>
                                     <option value="">Choose a skill</option>
                                     <option value="web-development">Web Development</option>
                                     <option value="ui-ux-design">UI/UX Design</option>
@@ -542,10 +448,7 @@
                             </div>
 
                             <div class="get-started-field">
-                                <label for="goal">
-                                    Your Learning Goal <span class="required">*</span>
-                                </label>
-
+                                <label for="goal">Your Learning Goal <span class="required">*</span></label>
                                 <select id="goal" name="goal" required>
                                     <option value="">Choose your goal</option>
                                     <option value="career">Prepare for a future career</option>
@@ -557,147 +460,82 @@
                             </div>
 
                             <div class="get-started-field">
-                                <label for="message">
-                                    Anything Else You'd Like to Share?
-                                    <span class="get-started-hint">(Optional)</span>
-                                </label>
-
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    placeholder="Tell us about your interests or what you hope to create..."
-                                    maxlength="1000"></textarea>
+                                <label for="message">Anything Else You'd Like to Share? <span class="get-started-hint">(Optional)</span></label>
+                                <textarea id="message" name="message" placeholder="Tell us about your interests or what you hope to create..." maxlength="1000"></textarea>
                             </div>
 
                             <p class="get-started-hint">
-                                This is a learning-plan demonstration. Your
-                                information will not be sent to a server by
-                                this form alone.
+                                This is a learning-plan demonstration. Your information
+                                will not be sent to a server by this form alone.
                             </p>
 
-                            <button type="submit" class="get-started-submit">
-                                Submit Get Started Form
-                            </button>
+                            <button type="submit" class="get-started-submit">Submit Get Started Form</button>
 
-                            <div id="get-started-status"
-                                 class="get-started-status"
-                                 role="status"
-                                 aria-live="polite"></div>
-
+                            <div id="get-started-status" class="get-started-status" role="status" aria-live="polite"></div>
                         </form>
-
                     </section>
 
-                    <!-- RIGHT: LEARNING POINTS -->
-                    <aside class="learning-points"
-                           aria-labelledby="learning-points-heading">
-
+                    <aside class="learning-points" aria-labelledby="learning-points-heading">
                         <div>
-                            <h2 class="learning-points-heading"
-                                id="learning-points-heading">
-                                Your Starting Point
-                            </h2>
-
+                            <h2 class="learning-points-heading" id="learning-points-heading">Your Starting Point</h2>
                             <p class="learning-points-intro">
                                 You don't need to learn everything at once.
                                 Start small, stay consistent, and keep building.
                             </p>
                         </div>
 
-                        <!-- CARD 1 -->
                         <article class="learning-point-card">
-                            <div class="learning-point-icon" aria-hidden="true">
-                                01
-                            </div>
-
+                            <div class="learning-point-icon" aria-hidden="true">01</div>
                             <h3>Focus on One Skill at a Time</h3>
-
-                            <p>
-                                Choose one skill and build your understanding
-                                step by step instead of trying to learn
-                                everything at once.
-                            </p>
+                            <p>Choose one skill and build your understanding step by step instead of trying to learn everything at once.</p>
                         </article>
 
-                        <!-- CARD 2 -->
                         <article class="learning-point-card">
-                            <div class="learning-point-icon" aria-hidden="true">
-                                02
-                            </div>
-
+                            <div class="learning-point-icon" aria-hidden="true">02</div>
                             <h3>Start with Small Projects</h3>
-
-                            <p>
-                                Practise what you learn by creating small
-                                projects. Building something yourself helps
-                                you gain confidence and practical experience.
-                            </p>
+                            <p>Practise what you learn by creating small projects. Building something yourself helps you gain confidence and practical experience.</p>
                         </article>
 
-                        <!-- CARD 3 -->
                         <article class="learning-point-card">
-                            <div class="learning-point-icon" aria-hidden="true">
-                                03
-                            </div>
-
+                            <div class="learning-point-icon" aria-hidden="true">03</div>
                             <h3>Explore Sample Projects</h3>
-
-                            <p>
-                                Explore sample projects to see how different
-                                skills can be used to create useful digital
-                                solutions and inspire your own ideas.
-                            </p>
+                            <p>Explore sample projects to see how different skills can be used to create useful digital solutions and inspire your own ideas.</p>
                         </article>
 
                         <div class="get-started-notice">
-                            <strong>Remember:</strong>
-                            Progress comes from consistent practice, not
-                            from learning everything in one day.
+                            <strong>Remember:</strong> Progress comes from consistent practice, not from learning everything in one day.
                         </div>
-
                     </aside>
 
                 </div>
-
             </div>
         </section>
-
     </main>
 
     <!-- FOOTER -->
     <footer class="site-footer">
         <div class="container">
-
             <div class="footer-grid">
-
                 <div class="footer-brand">
                     <a href="index.html" class="brand">
-                        <svg width="42" height="42" viewBox="0 0 42 42"
-                             fill="none" xmlns="http://www.w3.org/2000/svg"
-                             aria-hidden="true">
+                        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <rect width="42" height="42" rx="12" fill="#103C43"/>
-                            <path d="M12 14H30V18H16V22H27V26H16V30H30"
-                                  stroke="#C7F36B"
-                                  stroke-width="2.5"
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"/>
+                            <path d="M12 14H30V18H16V22H27V26H16V30H30" stroke="#C7F36B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-
                         <span class="brand-text">
                             <strong>SKILLORA</strong>
                             <small>Learn Skills. Create Possibilities.</small>
                         </span>
                     </a>
-
-                    <p>
+                    <p class="footer-text">
                         Learn practical skills, explore your interests,
                         and turn your ideas into possibilities.
                     </p>
                 </div>
 
                 <div>
-                    <h3>Explore</h3>
-                    <ul class="link-list">
+                    <h3 class="footer-title">Explore</h3>
+                    <ul class="footer-links">
                         <li><a href="explore.html">Explore Skills</a></li>
                         <li><a href="learning-paths.html">Learning Paths</a></li>
                         <li><a href="get-started.html">Get Started</a></li>
@@ -705,13 +543,12 @@
                 </div>
 
                 <div>
-                    <h3>SKILLORA</h3>
-                    <ul class="link-list">
+                    <h3 class="footer-title">SKILLORA</h3>
+                    <ul class="footer-links">
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
-
             </div>
 
             <div class="footer-bottom">
@@ -720,36 +557,9 @@
                     Learn Skills. Create Possibilities.
                 </p>
             </div>
-
         </div>
     </footer>
 
-    <button class="scroll-top"
-            type="button"
-            aria-label="Scroll to top">
-        ↑
-    </button>
-<!-- SKILLORA Moving Marquee -->
-<div class="skillora-marquee" aria-label="Learn new skills, build real projects, explore your potential">
-    <div class="skillora-marquee-track" aria-hidden="true">
-        <span>LEARN NEW SKILLS</span>
-        <span class="marquee-star">✦</span>
-        <span>BUILD REAL PROJECTS</span>
-        <span class="marquee-star">✦</span>
-        <span>EXPLORE YOUR POTENTIAL</span>
-        <span class="marquee-star">✦</span>
-        <span>CREATE POSSIBILITIES</span>
-        <span class="marquee-star">✦</span>
-
-        <span>LEARN NEW SKILLS</span>
-        <span class="marquee-star">✦</span>
-        <span>BUILD REAL PROJECTS</span>
-        <span class="marquee-star">✦</span>
-        <span>EXPLORE YOUR POTENTIAL</span>
-        <span class="marquee-star">✦</span>
-        <span>CREATE POSSIBILITIES</span>
-        <span class="marquee-star">✦</span>
-    </div>
-</div>
+    <button class="scroll-top" type="button" aria-label="Scroll to top">↑</button>
 </body>
 </html>
