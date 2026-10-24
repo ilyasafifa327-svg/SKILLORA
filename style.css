@@ -757,6 +757,247 @@ button,input,select,textarea{font:inherit}
     }
 }
 
+/* ==========================================
+   SKILLORA — MARQUEE ABOVE THE NAVIGATION
+   ========================================== */
 
+.skillora-marquee {
+    width: 100%;
+    overflow: hidden;
+    background: #103C43;
+    color: #FFFFFF;
+    padding: 16px 0;
+    border-top: 2px solid #C7F36B;
+    border-bottom: 2px solid #C7F36B;
+}
+
+.skillora-marquee-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 28px;
+    white-space: nowrap;
+    animation: skilloraMarquee 28s linear infinite;
+}
+
+.skillora-marquee-track span {
+    flex-shrink: 0;
+    color: #FFFFFF;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.skillora-marquee-track .marquee-star {
+    color: #C7F36B;
+    font-size: 1.4rem;
+}
+
+@keyframes skilloraMarquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .skillora-marquee-track {
+        animation: none;
+    }
+}
+
+
+/* ==========================================
+   SKILLORA — MOBILE NAVIGATION
+   ========================================== */
+
+@media (max-width: 768px) {
+    .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .site-header .nav-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+    .site-header .nav-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        position: relative;
+        z-index: 1002;
+    }
+
+    /* Make the three hamburger lines visible */
+    .site-header .nav-toggle span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: #103C43;
+        border-radius: 2px;
+    }
+
+    .site-header .primary-nav {
+        display: none;
+        flex-basis: 100%;
+        width: 100%;
+        max-height: calc(100dvh - 80px);
+        overflow-y: auto;
+        padding: 12px;
+        background: #FFFFFF;
+        border: 1px solid #E1E8E5;
+        border-radius: 12px;
+    }
+
+    .site-header .primary-nav.is-open {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+    }
+
+    .site-header .primary-nav a {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        line-height: 1.4;
+        color: #20292B;
+        text-decoration: none;
+        border-radius: 8px;
+    }
+
+    .site-header .primary-nav a:hover,
+    .site-header .primary-nav a:focus-visible {
+        background: #D8F3EF;
+        color: #103C43;
+    }
+
+    .site-header .primary-nav a[aria-current="page"] {
+        background: #D8F3EF;
+        color: #103C43;
+        font-weight: 700;
+    }
+}
+
+
+/* ==========================================
+   SKILLORA — GET STARTED FOOTER VISIBILITY
+   ========================================== */
+
+.get-started-page .site-footer {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    background: #103C43;
+    color: #D8F3EF;
+}
+
+.get-started-page .footer-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, 1fr);
+    gap: 32px;
+}
+
+.get-started-page .footer-brand,
+.get-started-page .footer-grid > div {
+    min-width: 0;
+    visibility: visible;
+    opacity: 1;
+}
+
+.get-started-page .footer-title {
+    display: block;
+    margin-bottom: 12px;
+    color: #FFFFFF;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    visibility: visible;
+    opacity: 1;
+}
+
+.get-started-page .footer-text {
+    margin-top: 16px;
+    color: #D8F3EF;
+    line-height: 1.8;
+    visibility: visible;
+    opacity: 1;
+}
+
+.get-started-page .footer-links {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    visibility: visible;
+    opacity: 1;
+}
+
+.get-started-page .footer-links li {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+}
+
+.get-started-page .footer-links a {
+    display: inline-block;
+    padding: 5px 0;
+    color: #D8F3EF;
+    text-decoration: none;
+    visibility: visible;
+    opacity: 1;
+}
+
+.get-started-page .footer-links a:hover,
+.get-started-page .footer-links a:focus-visible {
+    color: #C7F36B;
+}
+
+.get-started-page .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    color: #D8F3EF;
+    visibility: visible;
+    opacity: 1;
+}
+
+.get-started-page .footer-bottom p {
+    color: #D8F3EF;
+}
+
+@media (max-width: 700px) {
+    .get-started-page .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+    }
+
+    .get-started-page .footer-brand {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 420px) {
+    .get-started-page .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .get-started-page .footer-brand {
+        grid-column: auto;
+    }
+}
 
 
