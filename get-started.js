@@ -3,9 +3,9 @@
    ========================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
-
     const form = document.getElementById("get-started-form");
     const statusBox = document.getElementById("get-started-status");
+
     const submitButton = form
         ? form.querySelector('button[type="submit"]')
         : null;
@@ -16,12 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
         currentYear.textContent = new Date().getFullYear();
     }
 
-    // Stop if the form is not on the current page.
-    if (!form || !statusBox || !submitButton) {
-        return;
-    }
+    // This script is safe to load on pages without this form.
+    if (!form || !statusBox || !submitButton) return;
 
-    // Learning suggestions for each selected skill.
     const learningSuggestions = {
         "web-development": {
             title: "Web Development",
@@ -94,12 +91,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
-    // Handle form submission.
     form.addEventListener("submit", function (event) {
-
         event.preventDefault();
 
-        // Browser validation runs before this event.
         if (!form.checkValidity()) {
             form.reportValidity();
             return;
@@ -127,16 +121,23 @@ document.addEventListener("DOMContentLoaded", function () {
             formData.get("goal") || ""
         );
 
-        // Basic extra checks.
         if (fullName.length < 2) {
             showError("Please enter your full name.");
-            document.getElementById("full-name").focus();
+
+            const nameInput = document.getElementById("full-name");
+
+            if (nameInput) nameInput.focus();
+
             return;
         }
 
         if (!email || !email.includes("@")) {
             showError("Please enter a valid email address.");
-            document.getElementById("email").focus();
+
+            const emailInput = document.getElementById("email");
+
+            if (emailInput) emailInput.focus();
+
             return;
         }
 
@@ -149,52 +150,44 @@ document.addEventListener("DOMContentLoaded", function () {
             learningSuggestions[interest] ||
             learningSuggestions.other;
 
-        // Show a visible confirmation.
         showSuccess(fullName, selectedLearning);
 
-        // Update button after a successful local submission.
         submitButton.textContent = "Form Submitted ✓";
         submitButton.disabled = true;
 
-        // Scroll to the confirmation.
         statusBox.scrollIntoView({
             behavior: "smooth",
             block: "center"
         });
 
-        // This demo does not send the data to a server.
-        // Reset the form and button after the user has seen the result.
+        // Demonstration only: no information is sent to a server.
         window.setTimeout(function () {
             form.reset();
+
             submitButton.textContent = "Submit Get Started Form";
             submitButton.disabled = false;
-        }, 8000);
 
+            statusBox.className = "get-started-status";
+            statusBox.replaceChildren();
+        }, 8000);
     });
 
-    // Display an error message.
     function showError(message) {
-
-        statusBox.className =
-            "get-started-status is-error";
-
+        statusBox.className = "get-started-status is-error";
         statusBox.textContent = message;
     }
 
-    // Display the selected learning path.
     function showSuccess(fullName, learning) {
-
-        statusBox.className =
-            "get-started-status is-success";
-
-        // Build the content safely without inserting user text as HTML.
+        statusBox.className = "get-started-status is-success";
         statusBox.replaceChildren();
 
         const heading = document.createElement("h3");
+
         heading.textContent =
             "You're ready to get started, " + fullName + "!";
 
         const intro = document.createElement("p");
+
         intro.textContent =
             "Your selected learning area is " +
             learning.title +
@@ -203,22 +196,18 @@ document.addEventListener("DOMContentLoaded", function () {
         const list = document.createElement("ol");
 
         learning.steps.forEach(function (step) {
-
             const item = document.createElement("li");
+
             item.textContent = step;
-
             list.appendChild(item);
-
         });
 
         const note = document.createElement("p");
+
         note.textContent =
-            "This is a local demonstration. Your form details have not been sent or saved to an online server.";
+            "This is a local demonstration. Your form details " +
+            "have not been sent or saved to an online server.";
 
-        statusBox.appendChild(heading);
-        statusBox.appendChild(intro);
-        statusBox.appendChild(list);
-        statusBox.appendChild(note);
+        statusBox.append(heading, intro, list, note);
     }
-
 });
