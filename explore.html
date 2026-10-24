@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Explore Courses | SKILLORA</title>
+  <meta name="description" content="Search and filter SKILLORA's sample beginner courses in Development, Design, Data and Business.">
+  <meta name="theme-color" content="#103C43">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="js/main.js"></script>
+  <script src="js/explore.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="SKILLORA home">
+        <svg class="brand-mark" viewBox="0 0 48 48" width="40" height="40" aria-hidden="true" focusable="false">
+          <rect class="logo-bg" x="1" y="1" width="46" height="46" rx="13" fill="#103C43"/>
+          <path d="M9 21l13 4v14L9 35z" fill="#D8F3EF"/>
+          <path d="M26 25l13-9v15L26 39z" fill="#C7F36B"/>
+          <path d="M17 6l1.7 4.3L23 12l-4.3 1.7L17 18l-1.7-4.3L11 12l4.3-1.7z" fill="#C7F36B"/>
+        </svg>
+        <span class="brand-text">SKILLORA</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+        <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
+      </button>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="explore.html" aria-current="page">Explore</a></li>
+          <li><a class="nav-link" href="learning-paths.html">Learning Paths</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <a class="btn btn-primary nav-cta" href="get-started.html">Get Started
+          <svg class="icon icon-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="container page-hero-inner">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li aria-current="page">Explore</li>
+          </ol>
+        </nav>
+        <p class="eyebrow">Explore Courses</p>
+        <h1 id="page-title">Find Your Next Skill.</h1>
+        <p class="lead">Explore courses, discover interests, and find a starting point that fits your goals. Search by title or skill, or pick a category to narrow things down.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="catalogue-title">
+      <div class="container">
+        <h2 id="catalogue-title" class="visually-hidden">Course catalogue</h2>
+
+        <!-- Search and filters (shown by JavaScript, so nobody sees controls that cannot work) -->
+        <div class="toolbar" id="filter-toolbar" role="search" aria-label="Search and filter courses" hidden>
+          <div class="search-field">
+            <label class="visually-hidden" for="course-search">Search courses</label>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            <input class="input" type="search" id="course-search" placeholder="Search by title, skill or category" autocomplete="off">
+          </div>
+          <div class="chip-row" role="group" aria-label="Filter by category">
+            <button class="chip" type="button" data-category="all" aria-pressed="true">All Courses</button>
+            <button class="chip" type="button" data-category="development" aria-pressed="false">Development</button>
+            <button class="chip" type="button" data-category="design" aria-pressed="false">Design</button>
+            <button class="chip" type="button" data-category="data" aria-pressed="false">Data</button>
+            <button class="chip" type="button" data-category="business" aria-pressed="false">Business</button>
+          </div>
+        </div>
+
+        <div class="result-bar" id="result-bar" hidden>
+          <p class="result-count" id="result-count" role="status" aria-live="polite">Showing 8 of 8 courses</p>
+          <button class="btn btn-text" type="button" id="clear-filters" disabled>Clear Filters</button>
+        </div>
+
+        <!-- COURSE GRID: all 8 courses work even without JavaScript -->
+        <div class="grid grid--3" id="course-grid">
+
+          <!-- 1 -->
+          <article class="card card--hover course-card" data-course-id="web-development" data-category="development" data-keywords="html css web website portfolio coding">
+            <button class="btn-favorite" type="button" aria-pressed="false" aria-label="Save Web Development Foundations to favorites" data-course-id="web-development" hidden>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21.2l7.7-7.7 1.1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            </button>
+            <div class="course-art course-art--development">
+              <svg viewBox="0 0 320 160" aria-hidden="true" focusable="false">
+                <rect x="56" y="22" width="208" height="116" rx="12" fill="#F7F9F5"/>
+                <path d="M56 34a12 12 0 0 1 12-12h184a12 12 0 0 1 12 12v14H56z" fill="#D8F3EF"/>
+                <circle cx="73" cy="35" r="4" fill="#103C43"/><circle cx="87" cy="35" r="4" fill="#103C43" opacity=".5"/><circle cx="101" cy="35" r="4" fill="#103C43" opacity=".25"/>
+                <rect x="74" y="62" width="56" height="8" rx="4" fill="#103C43"/>
+                <rect x="138" y="62" width="40" height="8" rx="4" fill="#C7F36B"/>
+                <rect x="90" y="80" width="84" height="8" rx="4" fill="#657477" opacity=".45"/>
+                <rect x="90" y="98" width="48" height="8" rx="4" fill="#103C43" opacity=".8"/>
+                <rect x="146" y="98" width="62" height="8" rx="4" fill="#C7F36B"/>
+                <rect x="74" y="116" width="36" height="8" rx="4" fill="#103C43"/>
+              </svg>
+            </div>
+            <div class="course-body">
+              <div class="badge-row"><span class="badge badge--development">Development</span><span class="badge badge--level">Beginner</span></div>
+              <h3 class="course-title">Web Development Foundations</h3>
+              <p class="course-desc">Learn the foundations of building modern websites.</p>
+              <ul class="course-facts">
+                <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>6 weeks</li>
+              </ul>
+              <div>
+                <p class="hint"><strong>Skills you'll gain</strong></p>
+                <ul class="tag-list" aria-label="Skills you'll gain">
+                  <li class="tag">HTML5</li><li class="tag">CSS3</li><li class="tag">Responsive layouts</li><li class="tag">Website structure</li>
+                </ul>
+              </div>
+              <a class="btn btn-outline btn-block" href="course-details.html?id=web-development" aria-label="Explore Details for Web Development Foundations">Explore Details
+                <svg class="icon icon-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 2 -->
+          <article class="card card--hover course-card" data-course-id="javascript-essentials" data-category="development" data-keywords="js javascript coding programming interactive scripting dom">
+            <button class="btn-favorite" type="button" aria-pressed="false" aria-label="Save JavaScript Essentials to favorites" data-course-id="javascript-essentials" hidden>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21.2l7.7-7.7 1.1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            </button>
+            <div class="course-art course-art--development">
+              <svg viewBox="0 0 320 160" aria-hidden="true" focusable="false">
+                <path d="M118 40c-16 0-20 8-20 20v8c0 8-6 12-14 12 8 0 14 4 14 12v8c0 12 4 20 20 20" fill="none" stroke="#C7F36B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M202 40c16 0 20 8 20 20v8c0 8 6 12 14 12-8 0-14 4-14 12v8c0 12-4 20-20 20" fill="none" stroke="#C7F36B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="136" y="64" width="48" height="26" rx="13" fill="#F7F9F5"/>
+                <circle cx="171" cy="77" r="9" fill="#103C43"/>
+                <rect x="132" y="100" width="56" height="8" rx="4" fill="#D8F3EF" opacity=".7"/>
+              </svg>
+            </div>
+            <div class="course-body">
+              <div class="badge-row"><span class="badge badge--development">Development</span><span class="badge badge--level">Beginner</span></div>
+              <h3 class="course-title">JavaScript Essentials</h3>
+              <p class="course-desc">Bring websites to life with interactive JavaScript.</p>
+              <ul class="course-facts">
+                <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>4 weeks</li>
+              </ul>
+              <div>
+                <p class="hint"><strong>Skills you'll gain</strong></p>
+                <ul class="tag-list" aria-label="Skills you'll gain">
+                  <li class="tag">Variables</li><li class="tag">Functions</li><li class="tag">Events</li><li class="tag">DOM manipulation</li>
+                </ul>
+              </div>
+              <a class="btn btn-outline btn-block" href="course-details.html?id=javascript-essentials" aria-label="Explore Details for JavaScript Essentials">Explore Details
+                <svg class="icon icon-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 3 -->
+          <article class="card card--hover course-card" data-course-id="frontend-development" data-category="development" data-keywords="front-end frontend html css javascript interface website coding">
+            <button class="btn-favorite" type="button" aria-pressed="false" aria-label="Save Front-End Development to favorites" data-course-id="frontend-development" hidden>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21.2l7.7-7.7 1.1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            </button>
+            <div class="course-art course-art--development">
+              <svg viewBox="0 0 320 160" aria-hidden="true" focusable="false">
+                <rect x="52" y="30" width="146" height="100" rx="10" fill="#F7F9F5"/>
+                <path d="M52 40a10 10 0 0 1 10-10h126a10 10 0 0 1 10 10v8H52z" fill="#D8F3EF"/>
+                <rect x="64" y="58" width="50" height="60" rx="6" fill="#103C43"/>
+                <rect x="122" y="58" width="64" height="26" rx="6" fill="#C7F36B"/>
+                <rect x="122" y="92" width="64" height="26" rx="6" fill="#D8F3EF"/>
+                <rect x="214" y="48" width="56" height="96" rx="12" fill="#F7F9F5" stroke="#C7F36B" stroke-width="4"/>
+                <rect x="224" y="66" width="36" height="14" rx="4" fill="#103C43"/>
+                <rect x="224" y="88" width="36" height="8" rx="4" fill="#657477" opacity=".5"/>
+                <rect x="224" y="102" width="24" height="8" rx="4" fill="#C7F36B"/>
+                <circle cx="242" cy="132" r="3" fill="#103C43"/>
+              </svg>
+            </div>
+            <div class="course-body">
+              <div class="badge-row"><span class="badge badge--development">Development</span><span class="badge badge--level">Beginner</span></div>
+              <h3 class="course-title">Front-End Development</h3>
+              <p class="course-desc">Combine essential web technologies to create complete user interfaces.</p>
+              <ul class="course-facts">
+                <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>8 weeks</li>
+              </ul>
+              <div>
+                <p class="hint"><strong>Skills you'll gain</strong></p>
+                <ul class="tag-list" aria-label="Skills you'll gain">
+                  <li class="tag">HTML</li><li class="tag">CSS</li><li class="tag">JavaScript</li><li class="tag">Responsive design</li>
+                </ul>
+              </div>
+              <a class="btn btn-outline btn-block" href="course-details.html?id=frontend-development" aria-label="Explore Details for Front-End Development">Explore Details
+                <svg class="icon icon-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 4 -->
+          <article class="card card--hover course-card" data-course-id="uiux-design" data-category="design" data-keywords="ui ux user experience interface wireframe prototype usability app">
+            <button class="btn-favorite" type="button" aria-pressed="false" aria-label="Save UI/UX Design Fundamentals to favorites" data-course-id="uiux-design" hidden>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21.2l7.7-7.7 1.1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            </button>
+            <div class="course-art course-art--design">
+              <svg viewBox="0 0 320 160" aria-hidden="true" focusable="false">
+                <path d="M62 118C98 22 168 22 200 90S250 118 260 54" fill="none" stroke="#103C43" stroke-width="4" stroke-linecap="round"/>
+                <path d="M62 118L96 46M200 90l26-44" stroke="#103C43" stroke-width="2" stroke-dasharray="4 5" fill="none"/>
+                <rect x="54" y="110" width="16" height="16" rx="3" fill="#F7F9F5" stroke="#103C43" stroke-width="3"/>
+                <rect x="252" y="46" width="16" height="16" rx="3" fill="#F7F9F5" stroke="#103C43" stroke-width="3"/>
+                <circle cx="200" cy="90" r="10" fill="#C7F36B" stroke="#103C43" stroke-width="3"/>
+                <circle cx="96" cy="46" r="6" fill="#103C43"/>
+                <circle cx="226" cy="46" r="6" fill="#103C43"/>
+                <path d="M122 132l16-26 16 26z" fill="#103C43"/>
+              </svg>
+            </div>
+            <div class="course-body">
+              <div class="badge-row"><span class="badge badge--design">Design</span><span class="badge badge--level">Beginner</span></div>
+              <h3 class="course-title">UI/UX Design Fundamentals</h3>
+              <p class="course-desc">Learn how to design clear, attractive, user-friendly digital experiences.</p>
+              <ul class="course-facts">
+                <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>5 weeks</li>
+              </ul>
+              <div>
+                <p class="hint"><strong>Skills you'll gain</strong></p>
+                <ul class="tag-list" aria-label="Skills you'll gain">
+                  <li class="tag">Design principles</li><li class="tag">Wireframes</li><li class="tag">Typography</li><li class="tag">User flows</li>
+                </ul>
+              </div>
+              <a class="btn btn-outline btn-block" href="course-details.html?id=uiux-design" aria-label="Explore Details for UI/UX Design Fundamentals">Explore Details
+                <svg class="icon icon-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 5 -->
+          <article class="card card--hover course-card" data-course-id="graphic-design" data-category="design" data-keywords="graphic visual poster social media color colour branding creative">
+            <button class="btn-favorite" type="button" aria-pressed="false" aria-label="Save Graphic Design Essentials to favorites" data-course-id="graphic-design" hidden>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21.2l7.7-7.7 1.1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            </button>
+            <div class="course-art course-art--design">
+              <svg viewBox="0 0 320 160" aria-hidden="true" focusable="false">
+                <circle cx="130" cy="82" r="42" fill="#103C43"/>
+                <circle cx="182" cy="82" r="42" fill="#C7F36B"/>
+                <path d="M156 49A42 42 0 0 0 156 115A42 42 0 0 0 156 49z" fill="#F7F9F5"/>
+                <rect x="206" y="30" width="44" height="44" rx="10" fill="#F7F9F5" stroke="#103C43" stroke-width="4" transform="rotate(12 228 52)"/>
+                <path d="M62 132h60" stroke="#103C43" stroke-width="5" stroke-linecap="round"/>
+                <path d="M62 144h36" stroke="#103C43" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+              </svg>
+            </div>
+            <div class="course-body">
+              <div class="badge-row"><span class="badge badge--design">Design</span><span class="badge badge--level">Beginner</span></div>
+              <h3 class="course-title">Graphic Design Essentials</h3>
+              <p class="course-desc">Explore visual communication and create engaging digital designs.</p>
+              <ul class="course-facts">
+                <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>4 weeks</li>
+              </ul>
+              <div>
+                <p class="hint"><strong>Skills you'll gain</strong></p>
+                <ul class="tag-list" aria-label="Skills you'll gain">
+                  <li class="tag">Color theory</li><li class="tag">Layout</li><li class="tag">Typography</li><li class="tag">Visual hierarchy</li>
+                </ul>
+              </div>
+              <a class="btn btn-outline btn-block" href="course-details.html?id=graphic-design" aria-label="Explore Details for Graphic Design Essentials">Explore Details
+                <svg class="icon icon-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 6 -->
+          <article class="card card--hover course-card" data-course-id="data-fundamentals" data-category="data" data-keywords="data spreadsheet excel analysis analytics numbers dashboard">
+            <button class="btn-favorite" type="button" aria-pressed="false" aria-label="Save Data Fundamentals to favorites" data-course-id="data-fundamentals" hidden>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21.2l7.7-7.7 1.1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            </button>
+            <div class="course-art course-art--data">
+              <svg viewBox="0 0 320 160" aria-hidden="true" focusable="false">
+                <rect x="70" y="92" width="32" height="44" rx="6" fill="#103C43" opacity=".35"/>
+                <rect x="116" y="68" width="32" height="68" rx="6" fill="#103C43" opacity=".6"/>
+                <rect x="162" y="48" width="32" height="88" rx="6" fill="#103C43"/>
+                <rect x="208" y="26" width="32" height="110" rx="6" fill="#103C43"/>
+                <path d="M54 142h212" stroke="#103C43" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="224" cy="26" r="9" fill="#C7F36B" stroke="#103C43" stroke-width="3"/>
+              </svg>
+            </div>
+            <div class="course-body">
+              <div class="badge-row"><span class="badge badge--data">Data</span><span class="badge badge--level">Beginner</span></div>
+              <h3 class="course-title">Data Fundamentals</h3>
+              <p class="course-desc">Understand how to organize, explore, and interpret basic data.</p>
+              <ul class="course-facts">
+                <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>5 weeks</li>
+              </ul>
+              <div>
+                <p class="hint"><strong>Skills you'll gain</strong></p>
+                <ul class="tag-list" aria-label="Skills you'll gain">
+                  <li class="tag">Data organization</li><li class="tag">Spreadsheets</li><li class="tag">Sorting</li><li class="tag">Basic analysis</li>
+                </ul>
+              </div>
+              <a class="btn btn-outline btn-block" href="course-details.html?id=data-fundamentals" aria-label="Explore Details for Data Fundamentals">Explore Details
+                <svg class="icon icon-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 7 -->
+          <article class="card card--hover course-card" data-course-id="digital-marketing" data-category="business" data-keywords="marketing social media content campaign advertising audience analytics">
+            <button class="btn-favorite" type="button" aria-pressed="false" aria-label="Save Digital Marketing Foundations to favorites" data-course-id="digital-marketing" hidden>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21.2l7.7-7.7 1.1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            </button>
+            <div class="course-art course-art--business">
+              <svg viewBox="0 0 320 160" aria-hidden="true" focusable="false">
+                <path d="M96 70l62-26v76l-62-26z" fill="#103C43"/>
+                <rect x="76" y="70" width="28" height="30" rx="6" fill="#C7F36B" stroke="#103C43" stroke-width="3"/>
+                <path d="M104 100l8 28h14l-6-24z" fill="#103C43"/>
+                <path d="M176 62a26 26 0 0 1 0 40M190 50a44 44 0 0 1 0 64" fill="none" stroke="#103C43" stroke-width="5" stroke-linecap="round"/>
+                <path d="M216 120l24-24 16 12 28-38" fill="none" stroke="#103C43" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="284" cy="70" r="7" fill="#C7F36B" stroke="#103C43" stroke-width="3"/>
+              </svg>
+            </div>
+            <div class="course-body">
+              <div class="badge-row"><span class="badge badge--business">Business</span><span class="badge badge--level">Beginner</span></div>
+              <h3 class="course-title">Digital Marketing Foundations</h3>
+              <p class="course-desc">Discover how digital platforms help businesses reach audiences.</p>
+              <ul class="course-facts">
+                <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>4 weeks</li>
+              </ul>
+              <div>
+                <p class="hint"><strong>Skills you'll gain</strong></p>
+                <ul class="tag-list" aria-label="Skills you'll gain">
+                  <li class="tag">Content planning</li><li class="tag">Social media basics</li><li class="tag">Campaign planning</li><li class="tag">Analytics fundamentals</li>
+                </ul>
+              </div>
+              <a class="btn btn-outline btn-block" href="course-details.html?id=digital-marketing" aria-label="Explore Details for Digital Marketing Foundations">Explore Details
+                <svg class="icon icon-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 8 -->
+          <article class="card card--hover course-card" data-course-id="digital-business" data-category="business" data-keywords="business startup entrepreneur strategy planning audience product idea">
+            <button class="btn-favorite" type="button" aria-pressed="false" aria-label="Save Digital Business Essentials to favorites" data-course-id="digital-business" hidden>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21.2l7.7-7.7 1.1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            </button>
+            <div class="course-art course-art--business">
+              <svg viewBox="0 0 320 160" aria-hidden="true" focusable="false">
+                <rect x="88" y="66" width="144" height="70" rx="4" fill="#F7F9F5" stroke="#103C43" stroke-width="4"/>
+                <path d="M92 36h136l12 30H80z" fill="#103C43"/>
+                <path d="M119.2 36h27.2l-2.4 30h-32z" fill="#C7F36B"/>
+                <path d="M173.6 36h27.2l7.2 30h-32z" fill="#C7F36B"/>
+                <rect x="144" y="92" width="32" height="44" rx="4" fill="#103C43"/>
+                <rect x="100" y="84" width="32" height="26" rx="4" fill="#D8F3EF"/>
+                <rect x="188" y="84" width="32" height="26" rx="4" fill="#D8F3EF"/>
+                <path d="M70 140h180" stroke="#103C43" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="272" cy="52" r="14" fill="#C7F36B" stroke="#103C43" stroke-width="3"/>
+              </svg>
+            </div>
+            <div class="course-body">
+              <div class="badge-row"><span class="badge badge--business">Business</span><span class="badge badge--level">Beginner</span></div>
+              <h3 class="course-title">Digital Business Essentials</h3>
+              <p class="course-desc">Explore the essential ideas behind building and promoting a digital business.</p>
+              <ul class="course-facts">
+                <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>4 weeks</li>
+              </ul>
+              <div>
+                <p class="hint"><strong>Skills you'll gain</strong></p>
+                <ul class="tag-list" aria-label="Skills you'll gain">
+                  <li class="tag">Business planning</li><li class="tag">Audience research</li><li class="tag">Digital tools</li><li class="tag">Value propositions</li>
+                </ul>
+              </div>
+              <a class="btn btn-outline btn-block" href="course-details.html?id=digital-business" aria-label="Explore Details for Digital Business Essentials">Explore Details
+                <svg class="icon icon-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Empty state (shown by JavaScript when nothing matches) -->
+        <div class="empty-state" id="empty-state" hidden>
+          <span class="icon-tile"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
+          <h3>No courses match your search</h3>
+          <p class="muted">Try a different keyword, or choose another category.</p>
+          <button class="btn btn-secondary" type="button" id="empty-clear">Clear Filters</button>
+        </div>
+
+        <p class="notice" style="margin-top:2rem">These are sample demonstration courses. The outlines show how SKILLORA would present learning options. Lessons are not available yet, and the courses are not accredited. Favorites are saved only in this browser (see <a href="get-started.html">Get Started</a>).</p>
+      </div>
+    </section>
+
+    <section class="section section--cta" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta-panel">
+          <h2 id="cta-title">Not Sure Where to Start?</h2>
+          <p>Follow a learning path that puts the right skills in the right order.</p>
+          <a class="btn btn-primary" href="learning-paths.html">Discover Your Path
+            <svg class="icon icon-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html" aria-label="SKILLORA home">
+          <svg class="brand-mark" viewBox="0 0 48 48" width="40" height="40" aria-hidden="true" focusable="false">
+            <rect class="logo-bg" x="1" y="1" width="46" height="46" rx="13" fill="#103C43"/>
+            <path d="M9 21l13 4v14L9 35z" fill="#D8F3EF"/>
+            <path d="M26 25l13-9v15L26 39z" fill="#C7F36B"/>
+            <path d="M17 6l1.7 4.3L23 12l-4.3 1.7L17 18l-1.7-4.3L11 12l4.3-1.7z" fill="#C7F36B"/>
+          </svg>
+          <span class="brand-text">SKILLORA</span>
+        </a>
+        <p class="footer-tagline">Learn Skills. Create Possibilities.</p>
+        <p class="footer-text">SKILLORA is a learning-platform concept that helps beginners discover digital skills, follow structured paths, and practise through projects.</p>
+      </div>
+
+      <nav aria-label="Explore links">
+        <h2 class="footer-title">Explore</h2>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="explore.html">Explore Courses</a></li>
+          <li><a href="learning-paths.html">Learning Paths</a></li>
+          <li><a href="get-started.html">Get Started</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Learning categories">
+        <h2 class="footer-title">Categories</h2>
+        <ul class="footer-links">
+          <li><a href="explore.html?category=development">Development</a></li>
+          <li><a href="explore.html?category=design">Design</a></li>
+          <li><a href="explore.html?category=data">Data</a></li>
+          <li><a href="explore.html?category=business">Business</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Company links">
+        <h2 class="footer-title">SKILLORA</h2>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 SKILLORA. All rights reserved.</p>
+      <p>Sample courses and testimonials on this site are fictional demonstrations.</p>
+    </div>
+  </footer>
+
+  <button class="scroll-top" type="button" aria-label="Back to top">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+  </button><!-- SKILLORA Moving Marquee -->
+<div class="skillora-marquee" aria-label="Learn new skills, build real projects, explore your potential">
+    <div class="skillora-marquee-track" aria-hidden="true">
+        <span>LEARN NEW SKILLS</span>
+        <span class="marquee-star">✦</span>
+        <span>BUILD REAL PROJECTS</span>
+        <span class="marquee-star">✦</span>
+        <span>EXPLORE YOUR POTENTIAL</span>
+        <span class="marquee-star">✦</span>
+        <span>CREATE POSSIBILITIES</span>
+        <span class="marquee-star">✦</span>
+
+        <span>LEARN NEW SKILLS</span>
+        <span class="marquee-star">✦</span>
+        <span>BUILD REAL PROJECTS</span>
+        <span class="marquee-star">✦</span>
+        <span>EXPLORE YOUR POTENTIAL</span>
+        <span class="marquee-star">✦</span>
+        <span>CREATE POSSIBILITIES</span>
+        <span class="marquee-star">✦</span>
+    </div>
+</div>
+</body>
+</html>

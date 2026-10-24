@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Start your learning journey with SKILLORA. Choose a skill, explore learning paths, and build practical projects.">
+
+    <title>Get Started | SKILLORA</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Get Started page styling -->
+    <style>
+        /* PAGE */
+        .get-started-page {
+            background: #F7F9F5;
+            color: #20292B;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .get-started-page h1,
+        .get-started-page h2,
+        .get-started-page h3 {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* HERO */
+        .get-started-hero {
+            padding: 65px 0 55px;
+            background: #D8F3EF;
+        }
+
+        .get-started-hero .eyebrow {
+            color: #103C43;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .get-started-hero h1 {
+            color: #103C43;
+            font-size: clamp(2.3rem, 5vw, 3.7rem);
+            line-height: 1.15;
+            margin: 14px 0;
+        }
+
+        .get-started-hero p {
+            color: #34494B;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            max-width: 650px;
+        }
+
+        .get-started-breadcrumb {
+            margin-bottom: 25px;
+            color: #46585A;
+            font-size: 0.9rem;
+        }
+
+        .get-started-breadcrumb a {
+            color: #103C43;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* MAIN LAYOUT */
+        .get-started-section {
+            padding: 60px 0 75px;
+        }
+
+        .get-started-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+            align-items: start;
+            gap: 30px;
+        }
+
+        /* FORM CARD */
+        .get-started-form-card {
+            background: #FFFFFF;
+            border: 1px solid #D1E3DE;
+            border-radius: 20px;
+            padding: clamp(22px, 4vw, 38px);
+            box-shadow: 0 8px 30px rgba(16, 60, 67, 0.08);
+        }
+
+        .get-started-form-card h2 {
+            color: #103C43;
+            font-size: 1.8rem;
+            margin: 0 0 10px;
+        }
+
+        .get-started-form-intro {
+            color: #46585A;
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        .get-started-form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .get-started-field {
+            display: grid;
+            gap: 8px;
+        }
+
+        .get-started-field label {
+            color: #20292B;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .get-started-field label .required {
+            color: #103C43;
+        }
+
+        .get-started-field input,
+        .get-started-field select,
+        .get-started-field textarea {
+            width: 100%;
+            min-height: 50px;
+            padding: 13px 15px;
+            border: 1.5px solid #B9CBC5;
+            border-radius: 10px;
+            background: #FFFFFF;
+            color: #20292B;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            box-sizing: border-box;
+            opacity: 1;
+        }
+
+        .get-started-field textarea {
+            min-height: 125px;
+            resize: vertical;
+        }
+
+        .get-started-field input::placeholder,
+        .get-started-field textarea::placeholder {
+            color: #657477;
+            opacity: 1;
+        }
+
+        .get-started-field input:focus,
+        .get-started-field select:focus,
+        .get-started-field textarea:focus {
+            outline: 3px solid #D8F3EF;
+            border-color: #103C43;
+        }
+
+        .get-started-field select option {
+            color: #20292B;
+            background: #FFFFFF;
+        }
+
+        .get-started-hint {
+            color: #657477;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        /* SUBMIT BUTTON */
+        .get-started-submit {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            min-height: 54px;
+            padding: 15px 24px;
+            border: 2px solid #103C43;
+            border-radius: 10px;
+            background: #103C43;
+            color: #FFFFFF;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .get-started-submit:hover {
+            background: #C7F36B;
+            color: #103C43;
+            border-color: #C7F36B;
+        }
+
+        .get-started-submit:focus-visible {
+            outline: 3px solid #C7F36B;
+            outline-offset: 4px;
+        }
+
+        .get-started-submit:disabled {
+            cursor: wait;
+            opacity: 0.7;
+        }
+
+        /* FORM STATUS */
+        .get-started-status {
+            display: none;
+            padding: 16px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        .get-started-status.is-success {
+            display: block;
+            background: #D8F3EF;
+            border: 1px solid #103C43;
+            color: #103C43;
+        }
+
+        .get-started-status.is-error {
+            display: block;
+            background: #FBEAE9;
+            border: 1px solid #A83232;
+            color: #842525;
+        }
+
+        /* RIGHT SIDE */
+        .learning-points {
+            display: grid;
+            gap: 18px;
+        }
+
+        .learning-points-heading {
+            color: #103C43;
+            font-size: 1.65rem;
+            margin: 0 0 4px;
+        }
+
+        .learning-points-intro {
+            color: #46585A;
+            line-height: 1.8;
+            margin-bottom: 6px;
+        }
+
+        /* THREE LEARNING CARDS */
+        .learning-point-card {
+            display: block;
+            padding: 24px;
+            background: #FFFFFF;
+            color: #20292B;
+            border: 1.5px solid #D1E3DE;
+            border-radius: 16px;
+            box-shadow: 0 5px 18px rgba(16, 60, 67, 0.08);
+            opacity: 1;
+            visibility: visible;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .learning-point-card:hover {
+            transform: translateY(-3px);
+            border-color: #103C43;
+            box-shadow: 0 9px 22px rgba(16, 60, 67, 0.13);
+        }
+
+        .learning-point-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 46px;
+            height: 46px;
+            margin-bottom: 16px;
+            border-radius: 12px;
+            background: #D8F3EF;
+            color: #103C43;
+            font-size: 1.35rem;
+            font-weight: 800;
+        }
+
+        .learning-point-card h3 {
+            color: #103C43;
+            font-size: 1.2rem;
+            font-weight: 700;
+            line-height: 1.5;
+            margin: 0 0 10px;
+        }
+
+        .learning-point-card p {
+            color: #46585A;
+            font-size: 0.96rem;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* Make card content readable even if general CSS conflicts */
+        .get-started-page .learning-point-card h3 {
+            color: #103C43 !important;
+            -webkit-text-fill-color: #103C43;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .get-started-page .learning-point-card p {
+            color: #46585A !important;
+            -webkit-text-fill-color: #46585A;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* SMALL NOTICE */
+        .get-started-notice {
+            padding: 20px;
+            background: #D8F3EF;
+            border-left: 4px solid #103C43;
+            border-radius: 10px;
+            color: #34494B;
+            line-height: 1.8;
+        }
+
+        .get-started-notice strong {
+            color: #103C43;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 850px) {
+            .get-started-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .get-started-section {
+                padding: 40px 0 55px;
+            }
+
+            .get-started-hero {
+                padding: 45px 0 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .get-started-form-card,
+            .learning-point-card {
+                padding: 20px;
+            }
+
+            .get-started-hero h1 {
+                font-size: 2.3rem;
+            }
+        }
+    </style>
+
+    <script src="js/main.js" defer></script>
+    <script src="js/get-started.js" defer></script>
+</head>
+
+<body class="get-started-page">
+
+    <!-- HEADER
+    <header class="site-header">
+        <div class="container nav-wrap">
+
+            <a href="index.html" class="brand" aria-label="SKILLORA Home">
+                <svg width="42" height="42" viewBox="0 0 42 42"
+                     fill="none" xmlns="http://www.w3.org/2000/svg"
+                     aria-hidden="true">
+                    <rect width="42" height="42" rx="12" fill="#103C43"/>
+                    <path d="M12 14H30V18H16V22H27V26H16V30H30"
+                          stroke="#C7F36B"
+                          stroke-width="2.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                </svg>
+
+                <span class="brand-text">
+                    <strong>SKILLORA</strong>
+                    <small>Learn Skills. Create Possibilities.</small>
+                </span>
+            </a>
+
+            <button class="nav-toggle"
+                    type="button"
+                    aria-label="Open navigation menu"
+                    aria-controls="primary-nav"
+                    aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="explore.html">Explore</a>
+                <a href="learning-paths.html">Learning Paths</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="get-started.html" aria-current="page">Get Started</a>
+            </nav>
+
+        </div>
+    </header> -->
+
+    <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="SKILLORA home">
+        <svg class="brand-mark" viewBox="0 0 48 48" width="40" height="40" aria-hidden="true" focusable="false">
+          <rect class="logo-bg" x="1" y="1" width="46" height="46" rx="13" fill="#103C43"/>
+          <path d="M9 21l13 4v14L9 35z" fill="#D8F3EF"/>
+          <path d="M26 25l13-9v15L26 39z" fill="#C7F36B"/>
+          <path d="M17 6l1.7 4.3L23 12l-4.3 1.7L17 18l-1.7-4.3L11 12l4.3-1.7z" fill="#C7F36B"/>
+        </svg>
+        <span class="brand-text">SKILLORA</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+        <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
+      </button>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="index.html" aria-current="page">Home</a></li>
+          <li><a class="nav-link" href="explore.html">Explore</a></li>
+          <li><a class="nav-link" href="learning-paths.html">Learning Paths</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <a class="btn btn-primary nav-cta" href="get-started.html">Get Started
+          <svg class="icon icon-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+    <main id="main">
+
+        <!-- HERO -->
+        <section class="get-started-hero">
+            <div class="container">
+
+                <div class="get-started-breadcrumb">
+                    <a href="index.html">Home</a>
+                    &nbsp; / &nbsp;
+                    <span>Get Started</span>
+                </div>
+
+                <p class="eyebrow">YOUR JOURNEY STARTS HERE</p>
+
+                <h1>Start Learning.<br>Create Possibilities.</h1>
+
+                <p>
+                    Every expert starts as a beginner. Tell us what you want
+                    to learn, choose your interests, and take your first step
+                    towards building practical skills.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- FORM AND LEARNING POINTS -->
+        <section class="get-started-section">
+            <div class="container">
+
+                <div class="get-started-layout">
+
+                    <!-- LEFT: FORM -->
+                    <section class="get-started-form-card"
+                             aria-labelledby="form-heading">
+
+                        <h2 id="form-heading">Let's Get Started</h2>
+
+                        <p class="get-started-form-intro">
+                            Complete the form below to create your learning
+                            plan. Fields marked with * are required.
+                        </p>
+
+                        <form id="get-started-form"
+                              class="get-started-form">
+
+                            <div class="get-started-field">
+                                <label for="full-name">
+                                    Full Name <span class="required">*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="full-name"
+                                    name="fullName"
+                                    placeholder="Enter your full name"
+                                    autocomplete="name"
+                                    required
+                                    minlength="2"
+                                    maxlength="100">
+                            </div>
+
+                            <div class="get-started-field">
+                                <label for="email">
+                                    Email Address <span class="required">*</span>
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="you@example.com"
+                                    autocomplete="email"
+                                    required
+                                    maxlength="150">
+                            </div>
+
+                            <div class="get-started-field">
+                                <label for="experience">
+                                    Your Current Experience <span class="required">*</span>
+                                </label>
+
+                                <select id="experience"
+                                        name="experience"
+                                        required>
+                                    <option value="">Select your level</option>
+                                    <option value="beginner">Beginner — Just starting</option>
+                                    <option value="some-knowledge">Some knowledge — Learning the basics</option>
+                                    <option value="intermediate">Intermediate — Ready to improve</option>
+                                </select>
+                            </div>
+
+                            <div class="get-started-field">
+                                <label for="interest">
+                                    What Would You Like to Learn? <span class="required">*</span>
+                                </label>
+
+                                <select id="interest"
+                                        name="interest"
+                                        required>
+                                    <option value="">Choose a skill</option>
+                                    <option value="web-development">Web Development</option>
+                                    <option value="ui-ux-design">UI/UX Design</option>
+                                    <option value="graphic-design">Graphic Design</option>
+                                    <option value="python-programming">Python Programming</option>
+                                    <option value="data-analytics">Data Analytics</option>
+                                    <option value="digital-marketing">Digital Marketing</option>
+                                    <option value="other">Other Skills</option>
+                                </select>
+                            </div>
+
+                            <div class="get-started-field">
+                                <label for="goal">
+                                    Your Learning Goal <span class="required">*</span>
+                                </label>
+
+                                <select id="goal" name="goal" required>
+                                    <option value="">Choose your goal</option>
+                                    <option value="career">Prepare for a future career</option>
+                                    <option value="projects">Build personal projects</option>
+                                    <option value="business">Support a business or idea</option>
+                                    <option value="exploration">Explore a new interest</option>
+                                    <option value="improvement">Improve existing skills</option>
+                                </select>
+                            </div>
+
+                            <div class="get-started-field">
+                                <label for="message">
+                                    Anything Else You'd Like to Share?
+                                    <span class="get-started-hint">(Optional)</span>
+                                </label>
+
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    placeholder="Tell us about your interests or what you hope to create..."
+                                    maxlength="1000"></textarea>
+                            </div>
+
+                            <p class="get-started-hint">
+                                This is a learning-plan demonstration. Your
+                                information will not be sent to a server by
+                                this form alone.
+                            </p>
+
+                            <button type="submit" class="get-started-submit">
+                                Submit Get Started Form
+                            </button>
+
+                            <div id="get-started-status"
+                                 class="get-started-status"
+                                 role="status"
+                                 aria-live="polite"></div>
+
+                        </form>
+
+                    </section>
+
+                    <!-- RIGHT: LEARNING POINTS -->
+                    <aside class="learning-points"
+                           aria-labelledby="learning-points-heading">
+
+                        <div>
+                            <h2 class="learning-points-heading"
+                                id="learning-points-heading">
+                                Your Starting Point
+                            </h2>
+
+                            <p class="learning-points-intro">
+                                You don't need to learn everything at once.
+                                Start small, stay consistent, and keep building.
+                            </p>
+                        </div>
+
+                        <!-- CARD 1 -->
+                        <article class="learning-point-card">
+                            <div class="learning-point-icon" aria-hidden="true">
+                                01
+                            </div>
+
+                            <h3>Focus on One Skill at a Time</h3>
+
+                            <p>
+                                Choose one skill and build your understanding
+                                step by step instead of trying to learn
+                                everything at once.
+                            </p>
+                        </article>
+
+                        <!-- CARD 2 -->
+                        <article class="learning-point-card">
+                            <div class="learning-point-icon" aria-hidden="true">
+                                02
+                            </div>
+
+                            <h3>Start with Small Projects</h3>
+
+                            <p>
+                                Practise what you learn by creating small
+                                projects. Building something yourself helps
+                                you gain confidence and practical experience.
+                            </p>
+                        </article>
+
+                        <!-- CARD 3 -->
+                        <article class="learning-point-card">
+                            <div class="learning-point-icon" aria-hidden="true">
+                                03
+                            </div>
+
+                            <h3>Explore Sample Projects</h3>
+
+                            <p>
+                                Explore sample projects to see how different
+                                skills can be used to create useful digital
+                                solutions and inspire your own ideas.
+                            </p>
+                        </article>
+
+                        <div class="get-started-notice">
+                            <strong>Remember:</strong>
+                            Progress comes from consistent practice, not
+                            from learning everything in one day.
+                        </div>
+
+                    </aside>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+                    <a href="index.html" class="brand">
+                        <svg width="42" height="42" viewBox="0 0 42 42"
+                             fill="none" xmlns="http://www.w3.org/2000/svg"
+                             aria-hidden="true">
+                            <rect width="42" height="42" rx="12" fill="#103C43"/>
+                            <path d="M12 14H30V18H16V22H27V26H16V30H30"
+                                  stroke="#C7F36B"
+                                  stroke-width="2.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"/>
+                        </svg>
+
+                        <span class="brand-text">
+                            <strong>SKILLORA</strong>
+                            <small>Learn Skills. Create Possibilities.</small>
+                        </span>
+                    </a>
+
+                    <p>
+                        Learn practical skills, explore your interests,
+                        and turn your ideas into possibilities.
+                    </p>
+                </div>
+
+                <div>
+                    <h3>Explore</h3>
+                    <ul class="link-list">
+                        <li><a href="explore.html">Explore Skills</a></li>
+                        <li><a href="learning-paths.html">Learning Paths</a></li>
+                        <li><a href="get-started.html">Get Started</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>SKILLORA</h3>
+                    <ul class="link-list">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; <span id="current-year">2026</span> SKILLORA.
+                    Learn Skills. Create Possibilities.
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+    <button class="scroll-top"
+            type="button"
+            aria-label="Scroll to top">
+        ↑
+    </button>
+<!-- SKILLORA Moving Marquee -->
+<div class="skillora-marquee" aria-label="Learn new skills, build real projects, explore your potential">
+    <div class="skillora-marquee-track" aria-hidden="true">
+        <span>LEARN NEW SKILLS</span>
+        <span class="marquee-star">✦</span>
+        <span>BUILD REAL PROJECTS</span>
+        <span class="marquee-star">✦</span>
+        <span>EXPLORE YOUR POTENTIAL</span>
+        <span class="marquee-star">✦</span>
+        <span>CREATE POSSIBILITIES</span>
+        <span class="marquee-star">✦</span>
+
+        <span>LEARN NEW SKILLS</span>
+        <span class="marquee-star">✦</span>
+        <span>BUILD REAL PROJECTS</span>
+        <span class="marquee-star">✦</span>
+        <span>EXPLORE YOUR POTENTIAL</span>
+        <span class="marquee-star">✦</span>
+        <span>CREATE POSSIBILITIES</span>
+        <span class="marquee-star">✦</span>
+    </div>
+</div>
+</body>
+</html>

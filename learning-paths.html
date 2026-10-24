@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learning Paths | SKILLORA</title>
+  <meta name="description" content="Explore SKILLORA's sample learning paths: Front-End Development, UI/UX Design, Data Fundamentals and Digital Business.">
+  <meta name="theme-color" content="#103C43">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="js/main.js"></script>
+  <script src="js/learning-paths.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="SKILLORA home">
+        <svg class="brand-mark" viewBox="0 0 48 48" width="40" height="40" aria-hidden="true" focusable="false">
+          <rect class="logo-bg" x="1" y="1" width="46" height="46" rx="13" fill="#103C43"/>
+          <path d="M9 21l13 4v14L9 35z" fill="#D8F3EF"/>
+          <path d="M26 25l13-9v15L26 39z" fill="#C7F36B"/>
+          <path d="M17 6l1.7 4.3L23 12l-4.3 1.7L17 18l-1.7-4.3L11 12l4.3-1.7z" fill="#C7F36B"/>
+        </svg>
+        <span class="brand-text">SKILLORA</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+        <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
+      </button>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="explore.html">Explore</a></li>
+          <li><a class="nav-link" href="learning-paths.html" aria-current="page">Learning Paths</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <a class="btn btn-primary nav-cta" href="get-started.html">Get Started
+          <svg class="icon icon-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="container page-hero-inner">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li aria-current="page">Learning Paths</li>
+          </ol>
+        </nav>
+        <p class="eyebrow">Learning Paths</p>
+        <h1 id="page-title">Choose Your Learning Journey.</h1>
+        <p class="lead">Explore structured paths that help you understand what to learn, what to practise, and what to build next.</p>
+      </div>
+    </section>
+
+    <!-- PATH EXPLORER (shown by JavaScript) -->
+    <section class="section" id="explorer" aria-labelledby="explorer-title" hidden>
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Path Explorer</p>
+          <h2 id="explorer-title">See how each journey fits together</h2>
+          <p class="section-lead">Pick a path, then select a stage number to see what you would learn there. Durations are estimates.</p>
+        </div>
+
+        <div class="notice mb-5" id="selected-banner" role="status" hidden>
+          <p><strong>Your selected path:</strong> <span id="selected-name"></span></p>
+          <p>Saved in this browser only. SKILLORA does not track whether you have completed any stage.</p>
+          <div class="btn-row mt-4">
+            <a class="btn btn-secondary btn-sm" href="get-started.html">Open My Learning</a>
+            <button class="btn btn-text" type="button" id="clear-selection">Clear selection</button>
+          </div>
+        </div>
+
+        <div class="chip-row mb-5" role="group" aria-label="Choose a learning path">
+          <button class="chip" type="button" data-path="frontend" aria-pressed="true">Front-End Development</button>
+          <button class="chip" type="button" data-path="uiux" aria-pressed="false">UI/UX Design</button>
+          <button class="chip" type="button" data-path="data" aria-pressed="false">Data Fundamentals</button>
+          <button class="chip" type="button" data-path="business" aria-pressed="false">Digital Business</button>
+        </div>
+
+        <div class="card path-panel" id="explorer-panel">
+          <div class="path-panel-head">
+            <span id="panel-icon"></span>
+            <div>
+              <h3 id="panel-title"></h3>
+              <div class="badge-row mt-4" id="panel-badges"></div>
+            </div>
+            <span class="selected-flag" id="panel-flag" hidden>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12l5 5 9-10"/></svg>
+              Your selected path
+            </span>
+          </div>
+
+          <p class="course-desc" id="panel-desc"></p>
+
+          <ol class="stepper" id="panel-stepper" aria-label="Learning stages"></ol>
+          <p class="notice" id="panel-stage" aria-live="polite"></p>
+
+          <div class="path-project">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg>
+            <div>
+              <p><strong>Final project</strong></p>
+              <p id="panel-project"></p>
+            </div>
+          </div>
+
+          <div class="path-actions">
+            <button class="btn btn-outline js-details" type="button" id="panel-details" data-path="frontend">View Details</button>
+            <button class="btn btn-primary js-start" type="button" id="panel-start" data-path="frontend">
+              <span class="btn-label">Start This Path</span>
+              <svg class="icon icon-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALL PATHS (works without JavaScript) -->
+    <section class="section section--aqua" id="all-paths" aria-labelledby="paths-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">All Learning Paths</p>
+          <h2 id="paths-title">Four journeys, one clear next step</h2>
+          <p class="section-lead">Each path lists its stages and ends with a practical project. These are sample outlines for a demonstration platform.</p>
+        </div>
+
+        <noscript><p class="notice mb-5">JavaScript is turned off, so choosing and saving a path is unavailable. You can still read every path below.</p></noscript>
+
+        <div class="grid grid--4">
+
+          <article class="card card--hover path-card reveal" data-path="frontend">
+            <div class="path-head">
+              <span class="icon-tile icon-tile--lg tile--development"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></svg></span>
+              <div class="badge-row"><span class="badge badge--level">Beginner</span><span class="badge badge--level">Est. 14 weeks</span></div>
+            </div>
+            <h3>Front-End Development</h3>
+            <p class="course-desc">Learn to structure, style, and add interactivity to websites.</p>
+            <ol class="stepper stepper--vertical" aria-label="Front-End Development stages">
+              <li class="step"><span class="step-dot">1</span><span class="step-label">HTML</span></li>
+              <li class="step"><span class="step-dot">2</span><span class="step-label">CSS</span></li>
+              <li class="step"><span class="step-dot">3</span><span class="step-label">JavaScript</span></li>
+              <li class="step"><span class="step-dot">4</span><span class="step-label">Build a Website</span></li>
+            </ol>
+            <p class="hint"><strong>Final project:</strong> Build a responsive multi-page personal website.</p>
+            <div class="path-actions" hidden>
+              <button class="btn btn-outline js-details" type="button" data-path="frontend">View Details</button>
+              <button class="btn btn-primary js-start" type="button" data-path="frontend"><span class="btn-label">Start This Path</span></button>
+            </div>
+          </article>
+
+          <article class="card card--hover path-card reveal" data-path="uiux">
+            <div class="path-head">
+              <span class="icon-tile icon-tile--lg tile--design"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20l1-4L16 5l3 3L8 19l-4 1zM14 7l3 3"/></svg></span>
+              <div class="badge-row"><span class="badge badge--level">Beginner</span><span class="badge badge--level">Est. 10 weeks</span></div>
+            </div>
+            <h3>UI/UX Design</h3>
+            <p class="course-desc">Explore the process of creating useful and intuitive digital experiences.</p>
+            <ol class="stepper stepper--vertical" aria-label="UI/UX Design stages">
+              <li class="step"><span class="step-dot">1</span><span class="step-label">Design Principles</span></li>
+              <li class="step"><span class="step-dot">2</span><span class="step-label">Wireframes</span></li>
+              <li class="step"><span class="step-dot">3</span><span class="step-label">Prototypes</span></li>
+              <li class="step"><span class="step-dot">4</span><span class="step-label">Portfolio Project</span></li>
+            </ol>
+            <p class="hint"><strong>Final project:</strong> Design a mobile app prototype for your portfolio.</p>
+            <div class="path-actions" hidden>
+              <button class="btn btn-outline js-details" type="button" data-path="uiux">View Details</button>
+              <button class="btn btn-primary js-start" type="button" data-path="uiux"><span class="btn-label">Start This Path</span></button>
+            </div>
+          </article>
+
+          <article class="card card--hover path-card reveal" data-path="data">
+            <div class="path-head">
+              <span class="icon-tile icon-tile--lg tile--data"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20h16M7 16v-5M12 16V6M17 16v-8"/></svg></span>
+              <div class="badge-row"><span class="badge badge--level">Beginner</span><span class="badge badge--level">Est. 8 weeks</span></div>
+            </div>
+            <h3>Data Fundamentals</h3>
+            <p class="course-desc">Learn to organise, interpret, and present information.</p>
+            <ol class="stepper stepper--vertical" aria-label="Data Fundamentals stages">
+              <li class="step"><span class="step-dot">1</span><span class="step-label">Data Basics</span></li>
+              <li class="step"><span class="step-dot">2</span><span class="step-label">Spreadsheets</span></li>
+              <li class="step"><span class="step-dot">3</span><span class="step-label">Charts</span></li>
+              <li class="step"><span class="step-dot">4</span><span class="step-label">Data Project</span></li>
+            </ol>
+            <p class="hint"><strong>Final project:</strong> Create a simple data summary dashboard.</p>
+            <div class="path-actions" hidden>
+              <button class="btn btn-outline js-details" type="button" data-path="data">View Details</button>
+              <button class="btn btn-primary js-start" type="button" data-path="data"><span class="btn-label">Start This Path</span></button>
+            </div>
+          </article>
+
+          <article class="card card--hover path-card reveal" data-path="business">
+            <div class="path-head">
+              <span class="icon-tile icon-tile--lg tile--business"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 9h18v11H3zM9 9V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3M3 14h18"/></svg></span>
+              <div class="badge-row"><span class="badge badge--level">Beginner</span><span class="badge badge--level">Est. 8 weeks</span></div>
+            </div>
+            <h3>Digital Business</h3>
+            <p class="course-desc">Explore the digital skills used to communicate, promote, and understand businesses.</p>
+            <ol class="stepper stepper--vertical" aria-label="Digital Business stages">
+              <li class="step"><span class="step-dot">1</span><span class="step-label">Business Basics</span></li>
+              <li class="step"><span class="step-dot">2</span><span class="step-label">Digital Marketing</span></li>
+              <li class="step"><span class="step-dot">3</span><span class="step-label">Analytics</span></li>
+              <li class="step"><span class="step-dot">4</span><span class="step-label">Campaign Project</span></li>
+            </ol>
+            <p class="hint"><strong>Final project:</strong> Plan a sample digital marketing campaign.</p>
+            <div class="path-actions" hidden>
+              <button class="btn btn-outline js-details" type="button" data-path="business">View Details</button>
+              <button class="btn btn-primary js-start" type="button" data-path="business"><span class="btn-label">Start This Path</span></button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--cta" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta-panel reveal">
+          <h2 id="cta-title">Ready to Take the First Step?</h2>
+          <p>Tell us what interests you and create your personal learning starting point.</p>
+          <a class="btn btn-primary" href="get-started.html">Get Started
+            <svg class="icon icon-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- DETAILS MODAL (native dialog, filled by JavaScript) -->
+  <dialog class="modal" id="path-modal" aria-labelledby="modal-title">
+    <div class="modal-head">
+      <div>
+        <p class="eyebrow">Learning path</p>
+        <h3 id="modal-title"></h3>
+      </div>
+      <button class="btn btn-icon js-close" type="button" aria-label="Close path details">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html" aria-label="SKILLORA home">
+          <svg class="brand-mark" viewBox="0 0 48 48" width="40" height="40" aria-hidden="true" focusable="false">
+            <rect class="logo-bg" x="1" y="1" width="46" height="46" rx="13" fill="#103C43"/>
+            <path d="M9 21l13 4v14L9 35z" fill="#D8F3EF"/>
+            <path d="M26 25l13-9v15L26 39z" fill="#C7F36B"/>
+            <path d="M17 6l1.7 4.3L23 12l-4.3 1.7L17 18l-1.7-4.3L11 12l4.3-1.7z" fill="#C7F36B"/>
+          </svg>
+          <span class="brand-text">SKILLORA</span>
+        </a>
+        <p class="footer-tagline">Learn Skills. Create Possibilities.</p>
+        <p class="footer-text">SKILLORA is a learning-platform concept that helps beginners discover digital skills, follow structured paths, and practise through projects.</p>
+      </div>
+
+      <nav aria-label="Explore links">
+        <h2 class="footer-title">Explore</h2>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="explore.html">Explore Courses</a></li>
+          <li><a href="learning-paths.html">Learning Paths</a></li>
+          <li><a href="get-started.html">Get Started</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Learning categories">
+        <h2 class="footer-title">Categories</h2>
+        <ul class="footer-links">
+          <li><a href="explore.html?category=development">Development</a></li>
+          <li><a href="explore.html?category=design">Design</a></li>
+          <li><a href="explore.html?category=data">Data</a></li>
+          <li><a href="explore.html?category=business">Business</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Company links">
+        <h2 class="footer-title">SKILLORA</h2>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 SKILLORA. All rights reserved.</p>
+      <p>Sample courses and testimonials on this site are fictional demonstrations.</p>
+    </div>
+  </footer>
+
+  <button class="scroll-top" type="button" aria-label="Back to top">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+  </button><!-- SKILLORA Moving Marquee -->
+<div class="skillora-marquee" aria-label="Learn new skills, build real projects, explore your potential">
+    <div class="skillora-marquee-track" aria-hidden="true">
+        <span>LEARN NEW SKILLS</span>
+        <span class="marquee-star">✦</span>
+        <span>BUILD REAL PROJECTS</span>
+        <span class="marquee-star">✦</span>
+        <span>EXPLORE YOUR POTENTIAL</span>
+        <span class="marquee-star">✦</span>
+        <span>CREATE POSSIBILITIES</span>
+        <span class="marquee-star">✦</span>
+
+        <span>LEARN NEW SKILLS</span>
+        <span class="marquee-star">✦</span>
+        <span>BUILD REAL PROJECTS</span>
+        <span class="marquee-star">✦</span>
+        <span>EXPLORE YOUR POTENTIAL</span>
+        <span class="marquee-star">✦</span>
+        <span>CREATE POSSIBILITIES</span>
+        <span class="marquee-star">✦</span>
+    </div>
+</div>
+</body>
+</html>
